@@ -85,6 +85,7 @@ Languages: 🇬🇧 🇫🇷 🇷🇺 🇺🇦 🇧🇾 🇨🇳
   "telegram": {
     "token": "",
     "chat": "",
+    "thread" "",
     "replyTo": "",
     "templatePath": "/templates/telegram.ftl"
   },

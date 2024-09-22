@@ -67,6 +67,7 @@ Example of a notification in Telegram
   "telegram": {
     "token": "",
     "chat": "",
+    "thread": "",
     "replyTo": "",
     "templatePath": "/templates/telegram.ftl"
   },
