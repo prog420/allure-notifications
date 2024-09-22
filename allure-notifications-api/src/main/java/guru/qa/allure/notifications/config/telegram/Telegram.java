@@ -15,8 +15,14 @@ public class Telegram {
     private String token;
     @SerializedName("chat")
     private String chat;
+    @SerializedName("thread")
+    private String thread;
     @SerializedName("replyTo")
     private String replyTo;
     @SerializedName("templatePath")
     private String templatePath = "/templates/telegram.ftl";
+
+    public String getThread() {
+        return thread != null ? thread : "";
+    }
 }
