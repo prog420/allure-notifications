@@ -24,7 +24,7 @@ public class TelegramClient implements Notifier {
                 .header("Content-Type", ContentType.APPLICATION_FORM_URLENCODED.getMimeType())
                 .field("chat_id", telegram.getChat())
                 .field("message_thread_id", telegram.getThread())
-                .field("reply_to_message_id", telegram.getReplyTo() + "")
+                .field("reply_to_message_id", telegram.getReplyTo())
                 .field("text", new MessageTemplate(messageData).createMessageFromTemplate(telegram.getTemplatePath()))
                 .field("parse_mode", "HTML")
                 .asString()

@@ -3,6 +3,7 @@ package guru.qa.allure.notifications.config.telegram;
 import com.google.gson.annotations.SerializedName;
 
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author kadehar
@@ -10,6 +11,7 @@ import lombok.Getter;
  * Model class representing telegram settings.
  */
 @Getter
+@Setter
 public class Telegram {
     @SerializedName("token")
     private String token;
@@ -21,6 +23,10 @@ public class Telegram {
     private String replyTo;
     @SerializedName("templatePath")
     private String templatePath = "/templates/telegram.ftl";
+
+    public String getReplyTo() {
+        return replyTo != null ? replyTo : "";
+    }
 
     public String getThread() {
         return thread != null ? thread : "";
