@@ -1,6 +1,8 @@
 package guru.qa.allure.notifications.config;
 
 import java.io.FileNotFoundException;
+import java.util.Properties;
+import java.util.function.Consumer;
 
 import guru.qa.allure.notifications.exceptions.ConfigNotFoundException;
 import guru.qa.allure.notifications.json.JSON;
@@ -32,5 +34,23 @@ public class ApplicationConfig {
         } catch (FileNotFoundException e) {
             throw new ConfigNotFoundException("Unable to find config file at path " + configFile);
         }
+    }
+
+    private static void applySystemProperty(Properties properties, String name, Consumer<String> consumer) {
+        Object o = properties.get(name);
+        if (o != null) {
+            consumer.accept((String)o);
+        }
+    }
+
+    public static void apply(Config config, Properties properties) {
+        applySystemProperty(properties, "base.environment", config.getBase()::setEnvironment);
+        applySystemProperty(properties, "base.comment", config.getBase()::setComment);
+        applySystemProperty(properties, "base.allureFolder", config.getBase()::setAllureFolder);
+        applySystemProperty(properties, "base.project", config.getBase()::setProject);
+        applySystemProperty(properties, "base.reportLink", config.getBase()::setReportLink);
+        applySystemProperty(properties, "telegram.token", config.getTelegram()::setToken);
+        applySystemProperty(properties, "telegram.chat", config.getTelegram()::setChat);
+        applySystemProperty(properties, "telegram.thread", config.getTelegram()::setThread);
     }
 }
